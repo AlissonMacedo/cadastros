@@ -1,6 +1,5 @@
 .idea   
 venv
-db.sqlite3
 *.pyc
 bauhausbrasil/__pycache__/
 gestao_escolar.pem

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'apps.dashboard',
     'chartjs',
     'rest_framework',
+    'gunicorn'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
