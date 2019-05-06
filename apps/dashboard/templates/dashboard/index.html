@@ -24,7 +24,7 @@
         </div>
         <div class="sidebar-wrapper">
           <ul class="nav">
-            <li class="active ">
+            <li class="active">
               <a href="{% url 'dashboard' %}">
                 <i class="nc-icon nc-bank"></i>
                 <p>Dashboard</p>
@@ -348,7 +348,7 @@ $.ajax({
 function setChart(){
   var ctx = document.getElementById('grafico');
         var myChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'line',
             data: {
                 labels: labels,
                 datasets: [{
