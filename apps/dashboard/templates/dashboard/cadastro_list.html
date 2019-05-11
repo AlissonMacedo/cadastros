@@ -183,7 +183,7 @@
                     <tbody id="myTable">
                       <tr>
                         {% for cadastro in object_list %}
-                        <td>{{ cadastro.id}}</td>
+                        <td>{{ cadastro.numeroficha}}</td>
                         <td class="text-center">{{ cadastro.nomecompleto }}</td>
                         <td class="text-center">{{ cadastro.datadenascimento|date:"d/m/y" }}</td>
                         <td class="text-center">{{ cadastro.estadocivil }}</td>

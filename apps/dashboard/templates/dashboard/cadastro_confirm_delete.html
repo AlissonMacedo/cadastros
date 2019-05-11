@@ -1,0 +1,127 @@
+{% extends "dashboard/index.html" %}
+{% load static %}
+{% block body %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+
+
+<body class="">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="white" data-active-color="danger">
+      <!--
+          Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+      -->
+      <div class="logo">
+        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+          <div class="logo-image-small">
+            <img src="{% static '/dashboard/img/logo-small.png' %}">
+          </div>
+        </a>
+        <a href="{% url 'dashboard' %}" class="simple-text logo-normal">
+          Comunidade Cristã
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li>
+            <a href="{% url 'dashboard' %}">
+              <i class="nc-icon nc-bank"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li class="active ">
+            <a href="{% url 'cadastro' %}">
+              <i class="nc-icon nc-single-02"></i>
+              <p>CADASTRAR</p>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'list_cadastro' %}">
+              <i class="nc-icon nc-tile-56"></i>
+              <p>LISTAR CADASTROS</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <!-- Navbar -->
+
+      {% endblock body %}
+
+      {% block container %}
+      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand" href="#pablo">Plataforma de Cadastros</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+            aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navigation">
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card card-user">
+              <div class="card-header">
+                <h5 class="card-title">Deletar - Ficha</h5>
+              </div>
+              <div class="card-body">
+                <form class="col s12" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                <div class="row">
+                   <h3>Tem certeza que deseja excluir {{ cadastro.nomecompleto }}?</h3>
+                 </div>  
+                <div class="row confirmardeletar">
+                    <div class="update ml-auto mr-auto">
+                      <button type="submit" 
+                      class="btn btn-primary btn-round">Deletar</button>
+                       {% if object %}
+                       <a href="{% url 'deletar_cadastro' cadastro.id %}" 
+                        class="btn btn-primary ">Cancelar</a>
+                       {% endif %}
+                    </div>
+                  </div>
+                </form>
+                {% if form.errors %}
+                <div class="input-field col s12 m12 l12">
+                  <p>NOT VALID</p>
+                  {% for errors in form.errors %}
+                  {{ errors }}
+                  {% endfor %}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<style type="text/css">
+  .sexo {
+    margin-top: 20px;
+    margin-left: 10;
+    padding: 0px;
+
+
+  }
+  .confirmardeletar {
+      margin-top: 20px;
+  }
+</style>
+{% endblock container %}

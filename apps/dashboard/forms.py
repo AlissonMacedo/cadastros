@@ -9,7 +9,7 @@ class CadastroForm(forms.ModelForm):
     datadenascimento = forms.DateInput(format=('%d-%m-%Y'), attrs={'type':'date'})
     class Meta:
         model = Cadastro
-        fields = ['nomecompleto','datadenascimento',
+        fields = ['numeroficha', 'nomecompleto','datadenascimento',
             'etinia','estadocivil','sexo',
             'religiao', 'filhos', 'filhosmaiores',
             'filhosmenores', 'graudeinstrucao', 'cep', 'rua',
